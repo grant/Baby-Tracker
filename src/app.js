@@ -7,6 +7,17 @@
 var UI = require('ui');
 var Vector2 = require('vector2');
 
+var ajax = require('ajax');
+
+ajax({
+  url: 'http://api.theysaidso.com/qod.json',
+  type: 'json'
+}, function(data) {
+  console.log('Quote of the day is: ' + data.contents.quote);
+}, function(error) {
+  console.log('The ajax request failed: ' + error);
+});
+
 var main = new UI.Card({
   title: 'Pebble.js',
   icon: 'images/menu_icon.png',
@@ -15,6 +26,23 @@ var main = new UI.Card({
 });
 
 main.show();
+
+var m = new UI.Menu({
+  sections: [{
+    title: 'First section',
+    items: [{
+      title: 'First Item',
+      subtitle: 'Some subtitle',
+      icon: 'images/item_icon.png'
+    }, {
+      title: 'Second item',
+      subtitle: 'Some subtitle',
+      body: 'awegawgeaweg'
+    }]
+  }]
+});
+
+m.show();
 
 main.on('click', 'up', function(e) {
   var menu = new UI.Menu({
