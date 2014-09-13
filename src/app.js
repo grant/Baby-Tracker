@@ -10,39 +10,37 @@ var Vector2 = require('vector2');
 var ajax = require('ajax');
 
 ajax({
-  url: 'http://api.theysaidso.com/qod.json',
+  url: 'http://sleepybaby.herokuapp.com',
   type: 'json'
 }, function(data) {
-  console.log('Quote of the day is: ' + data.contents.quote);
+//   console.log('Quote of the day is: ' + data.contents.quote);
 }, function(error) {
-  console.log('The ajax request failed: ' + error);
+//   console.log('The ajax request failed: ' + error);
 });
 
 var main = new UI.Card({
-  title: 'Pebble.js',
+  title: 'Sleepy Baby',
   icon: 'images/menu_icon.png',
-  subtitle: 'Hello World!',
-  body: 'Press any button.'
+//   subtitle: 'Track the wellness of your baby',
+  body: 'Loading...'
 });
 
 main.show();
 
-var m = new UI.Menu({
-  sections: [{
-    title: 'First section',
-    items: [{
-      title: 'First Item',
-      subtitle: 'Some subtitle',
-      icon: 'images/item_icon.png'
-    }, {
-      title: 'Second item',
-      subtitle: 'Some subtitle',
-      body: 'awegawgeaweg'
-    }]
-  }]
-});
-
-m.show();
+// var m = new UI.Menu({
+//   sections: [{
+//     title: 'First section',
+//     items: [{
+//       title: 'First Item',
+//       subtitle: 'Some subtitle',
+//       icon: 'images/item_icon.png'
+//     }, {
+//       title: 'Second item',
+//       subtitle: 'Some subtitle',
+//       body: 'awegawgeaweg'
+//     }]
+//   }]
+// });
 
 main.on('click', 'up', function(e) {
   var menu = new UI.Menu({
