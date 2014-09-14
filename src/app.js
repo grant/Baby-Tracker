@@ -38,11 +38,24 @@ ajax({
     menuSections.push(section);
   }
   
-  console.log(JSON.stringify(menuSections));
   var sleepMenu = new UI.Menu({
     sections: menuSections
   });
   sleepMenu.show();
+  
+  sleepMenu.on('select', function(e) {
+    var index = e.sectionIndex;
+    var detailCard = new UI.Card();
+    var itemData = data[index];
+    detailCard.title(itemData.date);
+    detailCard.subtitle(itemData.total_time);
+    var body = '';
+    body += 'Awake: ' + itemData.awake + '%';
+    body += '\n';
+    body += 'Deep: ' + itemData.deep + '%';
+    detailCard.body(body);
+    detailCard.show();
+  });
 }, function(error) {
   console.log('The ajax request failed: ' + JSON.stringify(error));
 });
